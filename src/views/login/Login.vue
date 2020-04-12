@@ -52,6 +52,7 @@
 
 <script lang="ts">
     import {Component, Vue, Provide} from "vue-property-decorator";
+    import {State, Getter, Mutation, Action} from "vuex-class";
     import LoginHeader from "./LoginHeader.vue";
 
     @Component({
