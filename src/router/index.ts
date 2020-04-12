@@ -21,6 +21,11 @@ const routes: Array<RouteConfig> = [
         name: 'Password',
         component:()=>import('@/views/login/Password.vue'),
     },
+    {
+        path: '/header',
+        name: 'Header',
+        component:()=>import('@/views/Layout/LayoutHeader.vue'),
+    },
 ]
 
 const router = new VueRouter({

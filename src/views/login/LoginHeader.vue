@@ -21,6 +21,7 @@
         components: {}
     })
     export default class LayoutHeader extends Vue {
+
     }
 </script>
 
