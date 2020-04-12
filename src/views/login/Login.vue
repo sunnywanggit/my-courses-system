@@ -60,6 +60,10 @@
     })
     export default class Login extends Vue {
 
+
+        //存储用户信息
+        @Action('setUser') setUser:any;
+
         @Provide() isLogin: boolean = false;
 
         //我们可以通过装饰器去修饰我的的属性，并且我们定义在装饰器里面的属性具有可拓展性
@@ -93,7 +97,8 @@
                             // console.log(res.data);
                             // 存储token
                             localStorage.setItem("tsToken", res.data.token);
-
+                            //存储到vuex
+                            this.setUser(res.data.token)
                             // 登录成功 跳转 /
                             this.$router.push("/");
                         })
