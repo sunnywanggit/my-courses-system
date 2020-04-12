@@ -11,14 +11,12 @@
             <div class="top">
                 <i class="fa fa-reorder"></i>
                 <el-breadcrumb class="breadcrumb" separator="/">
-                    <el-breadcrumb-item>
-                       后台首页
-                    </el-breadcrumb-item>
-                    <el-breadcrumb-item>
-                        后台首页
-                    </el-breadcrumb-item>
-                    <el-breadcrumb-item>
-                        后台首页
+                    <el-breadcrumb-item
+                            class="breadcrumb-item"
+                            v-for="(item,index) in breadCrumbItems"
+                            :key="index"
+                            :to="{path:item.path}"
+                    >{{item.title}}
                     </el-breadcrumb-item>
                 </el-breadcrumb>
             </div>
@@ -34,13 +32,47 @@
 </template>
 
 <script lang="ts">
-    import {Component, Vue} from 'vue-property-decorator'
+    import {Watch,Component, Vue,Provide} from 'vue-property-decorator'
+
+
 
     @Component({
         components: {}
     })
     export default class Content extends Vue {
+        @Provide() breadCrumbItems:any;//面包屑数组
+
+        @Watch("$route") handleRouteChange(to:any){
+            console.log(to);
+            this.initBreadCrumbs(to)
+        }
+
+        created(): void {
+            this.initBreadCrumbs(this.$route)
+        }
+        mounted(): void {
+            // console.log(this.breadCrumbItems);
+        }
+
+        initBreadCrumbs(router:any){
+            //跟路由title
+            let breadCrumbItems:any = [{path:'/',title:'后台管理系统'}]
+
+            //遍历父级到当前子路由页面的title和path，存到数组中
+            for(const index in router.matched){
+                if(router.matched[index].meta && router.matched[index].meta.title){
+                    breadCrumbItems.push({
+                        path:router.matched[index].path ? router.matched[index].path : '/',
+                        title:router.matched[index].meta.title
+                    })
+                }
+            }
+
+            this.breadCrumbItems = breadCrumbItems;
+
+        }
     }
+
 </script>
 <style lang="scss" scoped>
     .layout-content {
