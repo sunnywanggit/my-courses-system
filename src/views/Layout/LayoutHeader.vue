@@ -33,6 +33,7 @@
         components: {}
     })
     export default class LayoutHeader extends Vue {
+        //从getters中获取个人用户信息
         @Getter('user') getUser:any;
 
         userCommand(command:string):void{
