@@ -1,4 +1,3 @@
-//奇怪，这两个api我没有找到
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { Message } from 'element-ui';
 import router from '@/router';
