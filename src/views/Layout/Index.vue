@@ -5,8 +5,6 @@
             <Sidebar slot="left"></Sidebar>
             <router-view slot="content"></router-view>
         </Content>
-
-
     </div>
 </template>
 
