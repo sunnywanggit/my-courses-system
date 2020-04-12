@@ -109,14 +109,14 @@ export const asyncRouterMap = [
         name: 'login',
         hidden: false,
         meta: { title: '系统登录' },
-        component: () => import('@/assets/Login/Login.vue')
+        component: () => import('@/views/login/Login.vue')
     },
     {
         path: '/password',
         name: 'password',
         hidden: false,
         meta: { title: '找回密码' },
-        component: () => import('@/assets/Login/Password.vue')
+        component: () => import('@/views/login/Password.vue')
     }
 ]
 
